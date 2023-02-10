@@ -30,7 +30,6 @@ if (route.params.slug) {
         return [
           "og_locale",
           "og_type",
-          "og_title",
           "og_description",
           "og_url",
           "og_site_name",
@@ -39,6 +38,12 @@ if (route.params.slug) {
         ].includes(item[0]);
       })
       .map((item) => {
+        // if (item[0] === "og_title") {
+        //   return {
+        //     name: "og:title",
+        //     content: ".",
+        //   };
+        // }
         if (item[0] === "twitter_card") {
           return {
             name: "twitter:card",
