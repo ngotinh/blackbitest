@@ -30,6 +30,7 @@ if (route.params.slug) {
         return [
           "og_locale",
           "og_type",
+          "og_title",
           "og_description",
           "og_url",
           "og_site_name",
@@ -38,12 +39,12 @@ if (route.params.slug) {
         ].includes(item[0]);
       })
       .map((item) => {
-        // if (item[0] === "og_title") {
-        //   return {
-        //     name: "og:title",
-        //     content: ".",
-        //   };
-        // }
+        if (item[0] === "og_title") {
+          return {
+            name: "og:title",
+            content: "      ",
+          };
+        }
         if (item[0] === "twitter_card") {
           return {
             name: "twitter:card",
@@ -58,6 +59,16 @@ if (route.params.slug) {
           content: item[1],
         };
       });
+    
+      if (metaData.og_title) {
+      let titleMeta = [
+        {
+          property: "og:title",
+          content: " ",
+        }
+      ];
+      meta.push(...titleMeta);
+    }
     //case og_image
     if (metaData.og_image) {
       let imageMeta = [
