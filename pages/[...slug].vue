@@ -88,15 +88,15 @@ if (route.params.slug) {
         });
       });
     }
-    //console.log(meta);
+
 
     useHead({
-      title: metaData?.title,
+      title: " ",
       meta: [
         ...meta,
         {
           name: "description",
-          content: metaData?.og_description,
+          content: " ",
         },
       ],
       link: [
