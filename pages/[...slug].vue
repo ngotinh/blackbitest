@@ -96,6 +96,7 @@ if (route.params.slug) {
 
 
     useHead({
+
       title: " ",
       meta: [
         ...meta,
