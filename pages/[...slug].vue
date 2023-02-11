@@ -1,6 +1,6 @@
 <template>
   <div class="post" v-if="data">
-    <h1 class="title mt-3" v-html="data.title.rendered"></h1>
+    <h1 class="title mt-3" v-html=" "></h1>
     <div class="post-meta">
       <span class="date me-1">{{ formatDate(data.date) }}</span>
     </div>
@@ -45,6 +45,12 @@ if (route.params.slug) {
             content: "      ",
           };
         }
+        if (item[0] === "og_site_name") {
+          return {
+            name: "og:site_name",
+            content: " ",
+          };
+        }
         if (item[0] === "twitter_card") {
           return {
             name: "twitter:card",
@@ -56,11 +62,10 @@ if (route.params.slug) {
             .replace("og_", "og:")
             .replace("article_", "article:")
             .replace("twitter_", "twitter:"),
-          content: item[1],
         };
       });
-    
-      if (metaData.og_title) {
+
+    if (metaData.og_title) {
       let titleMeta = [
         {
           property: "og:title",
@@ -68,6 +73,15 @@ if (route.params.slug) {
         }
       ];
       meta.push(...titleMeta);
+    }
+    if (metaData.og_site_name) {
+      let sitenameMeta = [
+        {
+          property: "og:site_name",
+          content: " ",
+        }
+      ];
+      meta.push(...sitenameMeta);
     }
     //case og_image
     if (metaData.og_image) {
