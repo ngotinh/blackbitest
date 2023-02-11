@@ -45,6 +45,12 @@ if (route.params.slug) {
             content: " ",
           };
         }
+        if (item[0] === "og_url") {
+          return {
+            name: "og:url",
+            content: " ",
+          };
+        }
         if (item[0] === "og_site_name") {
           return {
             name: "og:site_name",
