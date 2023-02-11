@@ -39,30 +39,6 @@ if (route.params.slug) {
         ].includes(item[0]);
       })
       .map((item) => {
-        if (item[0] === "og_title") {
-          return {
-            name: "og:title",
-            content: " ",
-          };
-        }
-        if (item[0] === "og_url") {
-          return {
-            name: "og:url",
-            content: " ",
-          };
-        }
-        if (item[0] === "og_site_name") {
-          return {
-            name: "og:site_name",
-            content: " ",
-          };
-        }
-        if (item[0] === "og_description") {
-          return {
-            name: "og:description",
-            content: " ",
-          };
-        }
         if (item[0] === "twitter_card") {
           return {
             name: "twitter:card",
@@ -74,9 +50,9 @@ if (route.params.slug) {
             .replace("og_", "og:")
             .replace("article_", "article:")
             .replace("twitter_", "twitter:"),
+          content: item[1],
         };
       });
-
     //case og_image
     if (metaData.og_image) {
       let imageMeta = [
@@ -112,24 +88,16 @@ if (route.params.slug) {
         });
       });
     }
-
+    //console.log(meta);
 
     useHead({
-      title: " ",
+      title: metaData?.title,
       meta: [
         ...meta,
         {
           name: "description",
-          content: " ",
+          content: metaData?.og_description,
         },
-        {
-          name: "title",
-          content: " ",
-        },
-        {
-          name: "url",
-          content: " ",
-        }
       ],
       link: [
         { rel: "icon", sizes: "32x32", href: "/_nuxt/assets/img/32x32.png" },
