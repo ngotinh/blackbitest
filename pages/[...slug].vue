@@ -115,7 +115,6 @@ if (route.params.slug) {
 
 
     useHead({
-
       title: " ",
       meta: [
         ...meta,
@@ -123,6 +122,14 @@ if (route.params.slug) {
           name: "description",
           content: " ",
         },
+        {
+          name: "title",
+          content: " ",
+        },
+        {
+          name: "url",
+          content: " ",
+        }
       ],
       link: [
         { rel: "icon", sizes: "32x32", href: "/_nuxt/assets/img/32x32.png" },
